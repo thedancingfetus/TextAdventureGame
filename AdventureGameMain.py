@@ -97,7 +97,7 @@ def strangeCreature():
             if weapon:
                 print("You kill the ghoul with the knife you found earlier. After moving forward, you find one of the exits. You made it!")
             else:
-                print("The creature has killed your stupid ass.")
+                print("The creature has kill.")
                 quit()
         elif userinput == "flee":
                 showSkeletons()
