@@ -109,7 +109,8 @@ def strangeCreature():
 def restart_program():
     global retry
     print("Would you like to retry?[Y/N]")
-    if input() == "Y":
+    yesorno = input()
+    if yesorno.lower() == "y":
         retry = True
     else:
         retry = False
