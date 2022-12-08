@@ -1,4 +1,5 @@
 weapon = False
+retry = True
 
 def introscene():
     directions = ["left","right","forward"]
@@ -43,7 +44,7 @@ def camerascene():
         userinput = input()
         if userinput == "forward":
             print("You've made it! You've found an exit!")
-            quit()
+            restart_program()
         elif userinput == "backward":
             showShadowFigure()
         else:
@@ -58,10 +59,10 @@ def hauntedRoom():
         userinput = input()
         if userinput == "right":
             print("Multiple ghoul-like creatures start emerging as you enter the room. You are killed. You have expired. You have ceased to be.")
-            quit()
+            restart_program()
         elif userinput == "left":
             print("You made it! You've found an exit!")
-            quit()
+            restart_program()
         elif userinput == "backward":
             introscene()
         else:
@@ -96,21 +97,33 @@ def strangeCreature():
         if userinput == "fight":
             if weapon:
                 print("You kill the ghoul with the knife you found earlier. After moving forward, you find one of the exits. You made it!")
+                restart_program()
             else:
                 print("The creature has kill.")
-                quit()
+                restart_program()
         elif userinput == "flee":
                 showSkeletons()
         else:
             print("Please enter a valid option.")
 
+def restart_program():
+    global retry
+    print("Would you like to retry?[Y/N]")
+    if input() == "Y":
+        retry = True
+    else:
+        retry = False
+
 if __name__ == "__main__":
-    while True:
+    while retry:
         print("Welcome to the Adventure Game!")
         print("As an avid traveler, you have decided to visit the Catacombs of Paris")
         print("However, during your exploration, you find yourself lost.")
         print("You can choose to walk in multiple directions to find a way out.")
-        print("Let's start with your name: ")
+        print("Let's start with your name: [Type 'quit' to Quit]")
         name = input()
-        print("Good luck, "+name+".")
-        introscene()
+        if(name != "quit"):                   
+            print("Good luck, "+name+".")
+            introscene()
+        else:
+            quit()
