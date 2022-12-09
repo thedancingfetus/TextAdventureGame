@@ -1,3 +1,5 @@
+import keyboard
+
 weapon = False
 retry = True
 
@@ -7,6 +9,21 @@ def introscene():
     userinput = ""
     while userinput not in directions:
         print("Options: left/right/backward/forward")
+        event = keyboard.read_event()
+        if event.event_type == keyboard.KEY_DOWN:
+            key = event.name
+            #print(f'Pressed: {key}')
+        if key == 'up':
+            hauntedRoom()
+        if key == 'right':
+            showSkeletons()
+        if key == 'left':
+            showShadowFigure()
+        if key == 'down':
+            print("You find that this door opens into a wall.")
+        if key == 'q':
+            break
+"""
         userinput = input()
         if userinput == "left":
             showShadowFigure()
@@ -18,6 +35,7 @@ def introscene():
             print("You find that this door opens into a wall.")
         else:
             print("Please enter a valid option.")
+"""
 
 def showShadowFigure():
     directions = ["right","backward"]
